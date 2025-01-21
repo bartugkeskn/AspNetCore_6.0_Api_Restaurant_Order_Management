@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace SignalR.DataAccessLayer.EntityFramework
 {
-    public class EfAboutDal : GenericRepository<About>, IAboutDal
+    public class EfSocialMediaDal : GenericRepository<SocialMedia>, ISocialMediaDal
     {
-        public EfAboutDal(SignalRContext context) : base(context)
+        public EfSocialMediaDal(SignalRContext context) : base(context)
         {
         }
     }
