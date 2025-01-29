@@ -55,12 +55,13 @@ namespace SignalRApi.Controllers
                 ProductName = createProductDto.ProductName,
                 ProductStatus = createProductDto.ProductStatus,
                 ImageUrl = createProductDto.ImageUrl,
-                Description = createProductDto.Description
+                Description = createProductDto.Description,
+                CategoryID = createProductDto.CategoryID,
             });
             return Ok("Ürün Bilgisi Eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
             var value = _productService.TGetByID(id);

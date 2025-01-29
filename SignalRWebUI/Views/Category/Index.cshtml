@@ -1,4 +1,4 @@
-﻿@model List<SignalRWebUI.Dtos.CategoryDtos.ResultCategoryDto>
+﻿@model List<ResultCategoryDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -33,8 +33,8 @@
 										<td>@item.CategoryID</td>
 										<td>@item.CategoryName</td>
 										<td>@item.CategoryStatus</td>
-										<td><a href="#" class="btn btn-outline-danger">Sil</a></td>
-										<td><a href="#" class="btn btn-outline-warning">Güncelle</a></td>
+										<td><a href="/Category/DeleteCategory/@item.CategoryID" class="btn btn-outline-danger btn-rounded">Sil</a></td>
+										<td><a href="/Category/UpdateCategory/@item.CategoryID" class="btn btn-outline-warning btn-rounded">Güncelle</a></td>
 									</tr>
 								}
 							</tbody>
