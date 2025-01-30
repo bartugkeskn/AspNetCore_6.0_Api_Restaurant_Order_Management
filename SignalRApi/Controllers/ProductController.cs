@@ -69,7 +69,7 @@ namespace SignalRApi.Controllers
             return Ok("Ürün Bilgisi Silindi");
         }
 
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var value = _productService.TGetByID(id);
@@ -86,7 +86,8 @@ namespace SignalRApi.Controllers
                 ProductStatus = updateProductDto.ProductStatus,
                 Price = updateProductDto.Price,
                 ImageUrl = updateProductDto.ImageUrl,
-                Description = updateProductDto.Description
+                Description = updateProductDto.Description,
+                CategoryID = updateProductDto.CategoryID
             });
             return Ok("Ürün Bilgisi Güncellendi.");
         }
