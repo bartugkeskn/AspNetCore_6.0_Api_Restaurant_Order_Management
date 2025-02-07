@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SignalR.DtoLayer.FeatureDto
+namespace SignalRWebUI.Dtos.FeatureDtos
 {
-    public class ResultFeatureDto
+    public class UpdateFeatureDto
     {
         public int FeatureID { get; set; }
         public string Title1 { get; set; }
