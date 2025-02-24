@@ -3,9 +3,24 @@ using SignalR.BusinessLayer.Concrete;
 using SignalR.DataAccessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
 using SignalR.DataAccessLayer.EntityFramework;
+using SignalRApi.Hubs;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+// CORS Policy Eklemelerini Yapýyoruz
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.AllowAnyHeader()
+        .AllowAnyMethod()
+        .SetIsOriginAllowed((host) => true)
+        .AllowCredentials();
+    });
+});
+builder.Services.AddSignalR();
 
 // Registration iþlemi için bunlarý yapýyoruz.
 builder.Services.AddDbContext<SignalRContext>();
@@ -52,10 +67,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CorsPolicy"); // CORS Politikasýný tanýmlýyoruz.
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<SignalRHub>("/signalrhub"); // Endpoint tanýmlamasý da yaptýk.
 
 app.Run();
